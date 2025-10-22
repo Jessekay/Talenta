@@ -36,6 +36,15 @@ public class Skill {
     public void setIsCore(Boolean isCore) {
         this.isCore = isCore;
     }
+    public Skill() {
+    }
+    public Skill(String skillId, String name, String description, String category, Boolean isCore) {
+        this.skillId = skillId;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.isCore = isCore;
+    }
 
     
 }
