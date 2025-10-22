@@ -1,4 +1,4 @@
-package com.example.Talenta;
+package com.example.Talenta.model;
 
 public class Location {
     private String province;
