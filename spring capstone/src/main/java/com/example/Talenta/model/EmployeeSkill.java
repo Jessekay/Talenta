@@ -1,31 +1,65 @@
 package com.example.Talenta.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "employee_skill")
 public class EmployeeSkill {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String employee;
-    private String skill;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id", nullable = false)
+    @JsonBackReference
+    private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "skill_id", nullable = false)
+    private Skill skill;
+
+    @Column(name = "poficiency_level")
     private String proficiencyLevel;
+
+    @Column(name = "acquisition_date")
     private LocalDate acquisitionDate;
+
+    @Column(name = "progress_notes")
     private String progressNotes;
+
     public UUID getId() {
         return id;
     }
     public void setId(UUID id) {
         this.id = id;
     }
-    public String getEmployee() {
+    public Employee getEmployee() {
         return employee;
     }
-    public void setEmployee(String employee) {
+    public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-    public String getSkill() {
+    public Skill getSkill() {
         return skill;
     }
-    public void setSkill(String skill) {
+    public void setSkill(Skill skill) {
         this.skill = skill;
     }
     public String getProficiencyLevel() {
@@ -48,9 +82,8 @@ public class EmployeeSkill {
     }
     public EmployeeSkill() {
     }
-    public EmployeeSkill(UUID id, String employee, String skill, String proficiencyLevel, LocalDate acquisitionDate,
+    public EmployeeSkill(Employee employee, Skill skill, String proficiencyLevel, LocalDate acquisitionDate,
             String progressNotes) {
-        this.id = id;
         this.employee = employee;
         this.skill = skill;
         this.proficiencyLevel = proficiencyLevel;
