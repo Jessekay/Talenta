@@ -3,6 +3,8 @@ package com.example.Talenta.model;
 import java.time.LocalDate;
 import java.util.UUID;
 
+
+
 public class Employee {
     private UUID id;
     private String firstName;
