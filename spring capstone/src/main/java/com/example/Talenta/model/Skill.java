@@ -1,16 +1,18 @@
 package com.example.Talenta.model;
 
+import java.util.UUID;
+
 public class Skill {
-    private String skillId;
+    private UUID id;
     private String name;
     private String description;
     private String category;
     private Boolean isCore;
-    public String getSkillId() {
-        return skillId;
+    public UUID getId() {
+        return id;
     }
-    public void setSkillId(String skillId) {
-        this.skillId = skillId;
+    public void setId(UUID id) {
+        this.id = id;
     }
     public String getName() {
         return name;
@@ -38,13 +40,12 @@ public class Skill {
     }
     public Skill() {
     }
-    public Skill(String skillId, String name, String description, String category, Boolean isCore) {
-        this.skillId = skillId;
+    public Skill(UUID id, String name, String description, String category, Boolean isCore) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.category = category;
         this.isCore = isCore;
     }
-
     
 }

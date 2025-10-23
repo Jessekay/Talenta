@@ -1,12 +1,20 @@
 package com.example.Talenta.model;
 
+import java.util.UUID;
+
 public class Location {
+    private UUID id;
     private String province;
     private String District;
     private String sector;
     private String cell;
     private String village;
-    
+    public UUID getId() {
+        return id;
+    }
+    public void setId(UUID id) {
+        this.id = id;
+    }
     public String getProvince() {
         return province;
     }
@@ -39,7 +47,8 @@ public class Location {
     }
     public Location() {
     }
-    public Location(String province, String district, String sector, String cell, String village) {
+    public Location(UUID id, String province, String district, String sector, String cell, String village) {
+        this.id = id;
         this.province = province;
         District = district;
         this.sector = sector;

@@ -1,19 +1,20 @@
 package com.example.Talenta.model;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Employee {
-    private String employeeId;
+    private UUID id;
     private String firstName;
     private String lastName;
     private String email;
     private LocalDate hireDate;
     private String location;
-    public String getEmployeeId() {
-        return employeeId;
+    public UUID getId() {
+        return id;
     }
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+    public void setId(UUID id) {
+        this.id = id;
     }
     public String getFirstName() {
         return firstName;
@@ -47,15 +48,14 @@ public class Employee {
     }
     public Employee() {
     }
-    public Employee(String employeeId, String firstName, String lastName, String email, LocalDate hireDate,
-            String location) {
-        this.employeeId = employeeId;
+    public Employee(UUID id, String firstName, String lastName, String email, LocalDate hireDate, String location) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.hireDate = hireDate;
         this.location = location;
     }
-
+    
     
 }
