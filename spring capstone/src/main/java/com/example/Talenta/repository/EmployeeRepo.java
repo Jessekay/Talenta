@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.P
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Sort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.example.Talenta.model.Employee;
 
@@ -26,7 +28,11 @@ public interface EmployeeRepo extends JpaRepository<Employee,UUID>{
     Page<Employee> findAll(Pageable pageable);
     Page<Employee> findByLocationProvince(String province, Pageable pageable);
 
+    @Query("SELECT e FROM Employee e WHERE LOWER(e.location.province) LIKE LOWER (CONCAT('%', :name, '%'))")
+    Page<Employee> findByProvinceNamingContaining(@Param("name") String name, Pageable pageable);
     
+    @Query("SELECT e FROM Employee e WHERE e.location.district = :district")
+    List<Employee> findByDistrict(@Param("district") String district);
 
 
 }
